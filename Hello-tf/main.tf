@@ -1,4 +1,3 @@
-
 # Aws Provider source and version being used
 terraform {
   required_providers {
@@ -22,7 +21,8 @@ provider "aws" {
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
-    features {}
+    features {   
+    }
     subscription_id = "378c0d57-dbfd-4234-a90e-e479534fd83d"
 }
 
