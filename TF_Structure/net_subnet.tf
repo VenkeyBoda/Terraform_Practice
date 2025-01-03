@@ -6,7 +6,7 @@ resource "aws_subnet" "dev1" {
   tags = {
     Name = "dev-1"
   }
-
+  depends_on = [aws_vpc.net]
 }
 
 # create a aws dev net subnet group 2
@@ -17,7 +17,7 @@ resource "aws_subnet" "dev2" {
   tags = {
     Name = "dev-2"
   }
-
+  depends_on = [aws_vpc.net]
 }
 
 # create a aws web net subnet group 3
@@ -28,6 +28,7 @@ resource "aws_subnet" "web1" {
   tags = {
     Name = "web-1"
   }
+  depends_on = [aws_vpc.net]
 }
 
 # create a aws web net subnet group 4
@@ -38,4 +39,5 @@ resource "aws_subnet" "web2" {
   tags = {
     Name = "web-2"
   }
+  depends_on = [aws_vpc.net]
 }

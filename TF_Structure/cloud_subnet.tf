@@ -6,6 +6,7 @@ resource "aws_subnet" "test1" {
   tags = {
     Name = "test-1"
   }
+  depends_on = [aws_vpc.cloud]
 }
 
 # create a aws test cloud subnet group 2
@@ -16,6 +17,7 @@ resource "aws_subnet" "test2" {
   tags = {
     Name = "test-2"
   }
+  depends_on = [aws_vpc.cloud]
 }
 
 # create a aws app cloud subnet group 3
@@ -26,6 +28,7 @@ resource "aws_subnet" "app1" {
   tags = {
     Name = "app-1"
   }
+  depends_on = [aws_vpc.cloud]
 }
 
 # create a aws app cloud subnet group 4
@@ -36,4 +39,5 @@ resource "aws_subnet" "app2" {
   tags = {
     Name = "app-2"
   }
+  depends_on = [aws_vpc.cloud]
 }
