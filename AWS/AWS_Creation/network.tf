@@ -1,4 +1,4 @@
-# create a aws 4 subnets groups using count
+# create a aws multiple subnets groups using count
 resource "aws_subnet" "subnets" {
   count             = length(var.subnet_cidrs)
   vpc_id            = aws_vpc.network.id
