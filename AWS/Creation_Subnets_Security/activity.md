@@ -1,4 +1,4 @@
-<!-- # following below steps we can create  -->
+# following below steps we can create  -->
 <!-- 1 vpc
 1 internet gateway
 2 public subnets 
@@ -13,4 +13,4 @@ Create a private route table
 create a public route table
 add route in public route table to internet gateway
 Create subnets for public and associate with public route table
-Create subnets for private and associate with private route table -->
+Create subnets for private and associate with private route table
