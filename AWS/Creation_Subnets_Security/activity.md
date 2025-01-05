@@ -1,12 +1,12 @@
 # following below steps we can create  -->
-<!-- 1 vpc
+ 1 vpc
 1 internet gateway
 2 public subnets 
 2 private subnets
 1 public route table
 1 priavte route table -->
 
-<!-- Steps:
+Steps:
 Create vpc
 Create an internet gateway
 Create a private route table
