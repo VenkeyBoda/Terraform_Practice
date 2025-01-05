@@ -14,3 +14,7 @@
    * add route in public route table to internet gateway
    * Create subnets for public and associate with public route table
    * Create subnets for private and associate with private route table
+
+# let's create security group
+   * create a public security group
+   * create a private security group    

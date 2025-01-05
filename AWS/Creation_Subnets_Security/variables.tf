@@ -38,3 +38,25 @@ variable "subnets_private" {
   }))
   description = "private subnets"
 }
+
+# create a variable group for web security group
+variable "web_security_group" {
+  type = list(object({
+    name      = string
+    cidr      = string
+    from_port = string
+    to_port   = string
+
+  }))
+}
+
+# create a variable group for db security group
+variable "db_security_group" {
+  type = list(object({
+    name      = string
+    cidr      = string
+    from_port = string
+    to_port   = string
+  }))
+
+}

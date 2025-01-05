@@ -24,3 +24,8 @@ subnets_private = [{
   cidr = "172.16.3.0/24"
   az   = "ap-south-1b"
 }]
+
+web_security_group = [ {
+  name = "web-sg"
+  
+} ]
