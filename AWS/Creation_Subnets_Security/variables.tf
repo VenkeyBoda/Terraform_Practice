@@ -1,25 +1,25 @@
-# Create a varibale group for vpc region
+# AWS Region Variable
 variable "region" {
   type        = string
   default     = "ap-south-1"
   description = "variable for a region in aws"
 }
 
-# create a variable group for cidr range
+# VPC CIDR Range Variable
 variable "vpc_cidr" {
   type        = string
   default     = "172.16.0.0/16"
   description = "variable for a network range"
 }
 
-# create a variable for network name
+# Network Name Variable
 variable "network_name" {
   type        = string
   default     = "ntier"
   description = "variable for network default name"
 }
 
-# create a variable group for public subnets
+# Public Subnets Variable
 variable "subnets_public" {
   type = list(object({
     name = string
@@ -29,7 +29,7 @@ variable "subnets_public" {
   description = "public subnets"
 }
 
-# create a variable group for private subnets
+# Private Subnets Variable
 variable "subnets_private" {
   type = list(object({
     name = string
@@ -39,7 +39,7 @@ variable "subnets_private" {
   description = "private subnets"
 }
 
-# create a variable group for web security group
+# Web Security Group Variable
 variable "web_security_group" {
   type = object({
     name        = optional(string, "web-sg")
@@ -54,7 +54,7 @@ variable "web_security_group" {
   })
 }
 
-# create a variable group for db security group
+# Database Security Group Variable
 variable "db_security_group" {
   type = object({
     name        = optional(string, "db-sg")
@@ -69,10 +69,23 @@ variable "db_security_group" {
   })
 }
 
-# variable group for importing an existing key pair the public key
+# # Key Pair Variable Group for importing an existing key pair the public key
 variable "key-info" {
   type = object({
-    name            = string
-    public_key_path = optional(string, "~/.ssh/id_rsa.pub")
+    name             = string
+    public_key_path  = optional(string, "~/.ssh/id_rsa.pub")
+    private_key_path = optional(string, "~/.ssh/id_rsa")
+  })
+}
+
+# variable group information for ec2 instance with ubuntu 24.04
+variable "web_instance_info" {
+  type = object({
+    name                        = string
+    ami                         = optional(string, "ami-053b12d3152c0cc71")
+    instance_type               = optional(string, "t2.micro")
+    associate_public_ip_address = optional(bool, true)
+    username                    = optional(string, "ubuntu")
+
   })
 }

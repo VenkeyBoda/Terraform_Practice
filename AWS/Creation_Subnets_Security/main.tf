@@ -1,5 +1,4 @@
 # Create a aws resource group for VPC
-
 resource "aws_vpc" "base" {
   cidr_block = var.vpc_cidr
   tags = {
@@ -8,7 +7,7 @@ resource "aws_vpc" "base" {
 
 }
 
-# Create a aws internet gateway
+# Create a aws internet gateway resource
 resource "aws_internet_gateway" "base" {
   vpc_id = aws_vpc.base.id
   tags = {
@@ -17,7 +16,7 @@ resource "aws_internet_gateway" "base" {
   depends_on = [aws_vpc.base]
 }
 
-# Create a aws private route table network
+# Create a aws private route table network resource
 resource "aws_route_table" "private" {
   count  = local.private_subnet_count != 0 ? 1 : 0
   vpc_id = aws_vpc.base.id
@@ -27,7 +26,7 @@ resource "aws_route_table" "private" {
   depends_on = [aws_vpc.base]
 }
 
-# Create a aws public route table network and add route in public route table to internet gateway
+# Create a aws public route table network resource and add route in public route table to internet gateway
 resource "aws_route_table" "public" {
   count  = local.public_subnet_count != 0 ? 1 : 0
   vpc_id = aws_vpc.base.id
@@ -41,7 +40,7 @@ resource "aws_route_table" "public" {
   depends_on = [aws_vpc.base, aws_internet_gateway.base]
 }
 
-# Create subnets for public
+# Create subnets resource for public
 resource "aws_subnet" "public" {
   count             = local.public_subnet_count
   vpc_id            = aws_vpc.base.id
@@ -52,7 +51,7 @@ resource "aws_subnet" "public" {
   }
 }
 
-# public subnet associate with public route table
+# public subnet resource associate with public route table
 resource "aws_route_table_association" "public" {
   count          = length(var.subnets_public)
   subnet_id      = aws_subnet.public[count.index].id
@@ -60,7 +59,7 @@ resource "aws_route_table_association" "public" {
 
 }
 
-# Create subnets for private
+# Create subnets resource for private  
 resource "aws_subnet" "private" {
   count             = local.private_subnet_count
   vpc_id            = aws_vpc.base.id
@@ -71,7 +70,7 @@ resource "aws_subnet" "private" {
   }
 }
 
-# private subnet associate with public route table
+# private subnet resource associate with public route table 
 resource "aws_route_table_association" "private" {
   count          = length(var.subnets_private)
   subnet_id      = aws_subnet.private[count.index].id
