@@ -41,22 +41,30 @@ variable "subnets_private" {
 
 # create a variable group for web security group
 variable "web_security_group" {
-  type = list(object({
-    name      = string
-    cidr      = string
-    from_port = string
-    to_port   = string
-
-  }))
+  type = object({
+    name        = optional(string, "web-sg")
+    description = optional(string, "Allow inbound traffic and all outbound traffic")
+    rules = list(object({
+      cidr_ipv4   = optional(string, "0.0.0.0/0")
+      from_port   = number
+      to_port     = number
+      ip_protocol = optional(string, "tcp")
+      }
+    ))
+  })
 }
 
 # create a variable group for db security group
 variable "db_security_group" {
-  type = list(object({
-    name      = string
-    cidr      = string
-    from_port = string
-    to_port   = string
-  }))
-
+  type = object({
+    name        = optional(string, "db-sg")
+    description = optional(string, "Allow inbound traffic and all outbound traffic")
+    rules = list(object({
+      cidr_ipv4   = optional(string, "0.0.0.0/0")
+      from_port   = number
+      to_port     = number
+      ip_protocol = optional(string, "tcp")
+      }
+    ))
+  })
 }

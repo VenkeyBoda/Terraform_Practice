@@ -16,5 +16,9 @@
    * Create subnets for private and associate with private route table
 
 # let's create security group
-   * create a public security group
-   * create a private security group    
+   * create a public security group for web
+      * create a security group inbound rules
+      * create a security group for default outbound rules
+   * create a private security group for db
+      * create a security group inbound rules
+      * create a security group for default outbound rules
