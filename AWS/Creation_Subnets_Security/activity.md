@@ -6,7 +6,7 @@
    * 1 public route table
    * 1 priavte route table
 
-  ## Steps:
+   ## Steps:
       * Create vpc
       * Create an internet gateway
       * Create a private route table
