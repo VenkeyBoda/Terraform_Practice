@@ -57,3 +57,10 @@ resource "aws_vpc_security_group_egress_rule" "dbdefault" {
   ip_protocol       = -1
 
 }
+
+# importing an existing key pair the public key
+resource "aws_key_pair" "sshkey" {
+  key_name   = var.key-info.name
+  public_key = file(var.key-info.public_key_path)
+
+}

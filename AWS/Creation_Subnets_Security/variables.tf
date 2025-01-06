@@ -68,3 +68,11 @@ variable "db_security_group" {
     ))
   })
 }
+
+# variable group for importing an existing key pair the public key
+variable "key-info" {
+  type = object({
+    name            = string
+    public_key_path = optional(string, "~/.ssh/id_rsa.pub")
+  })
+}

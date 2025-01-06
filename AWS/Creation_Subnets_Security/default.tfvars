@@ -42,3 +42,7 @@ db_security_group = {
     to_port   = 3306
   }]
 }
+
+key-info = {
+  name = "my-key-pair"
+}
