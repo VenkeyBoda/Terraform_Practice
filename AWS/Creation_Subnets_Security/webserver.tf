@@ -1,0 +1,1 @@
+# create an ec2 instance with ubuntu 24.04

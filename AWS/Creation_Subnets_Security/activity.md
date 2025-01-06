@@ -26,4 +26,13 @@
 
 # import a ssh key (pulic key)
    * i have a key pair ~/.ssh/id_rsa and ~/.ssh/id_rsa.pub
-   * import ssh key pair: [added key pair](https://github.com/VenkeyBoda/Terraform_Practice/commit/675c655753b437ac8a7ba82079ee79f26fa648c4)   
+   * import ssh key pair: [added key pair](https://github.com/VenkeyBoda/Terraform_Practice/commit/675c655753b437ac8a7ba82079ee79f26fa648c4) 
+
+# Now lets create an ec2 instance with ubuntu 24.04
+   * The inputs required are
+      * ami id
+      * instance type
+      * key pair
+      * subnet
+      * public ip
+      * security group     
