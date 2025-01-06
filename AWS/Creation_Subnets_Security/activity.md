@@ -35,4 +35,6 @@
       * key pair
       * subnet
       * public ip
-      * security group     
+      * security group
+
+      * used hardcore values:         
