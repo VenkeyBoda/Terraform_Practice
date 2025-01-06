@@ -37,4 +37,6 @@
       * public ip
       * security group
 
-      * used hardcore values:         
+      * used hardcore values: [passed hardcore values](https://github.com/VenkeyBoda/Terraform_Practice/commit/6c0542ed4a1358d1a05d3bdfb1bce4f16fb39a0c)
+
+      *       
