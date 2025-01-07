@@ -11,4 +11,4 @@
     * create a aws multiple subnets groups using count
     * using local variables
 
-  * passed sensitive data with local variables:
+  * passed sensitive data with local variables: [after adding all](https://github.com/VenkeyBoda/Terraform_Practice/commit/7edb20a3c3d07ee52f8273ebdf45c94668df7be9)
