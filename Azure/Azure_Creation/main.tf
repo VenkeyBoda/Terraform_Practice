@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "base" {
 
 # Create a azure virtual network group
 resource "azurerm_virtual_network" "ntier" {
-  count               = length(var.virtual_network_info)
+  count               = local.virtual_netwok_count
   name                = var.virtual_network_info[count.index].name
   resource_group_name = azurerm_resource_group.base.name
   address_space       = [var.virtual_network_info[count.index].address_space]
@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "ntier" {
 
 # Create a azure subnet group
 resource "azurerm_subnet" "web" {
-  count                = length(var.subnets_info)
+  count                = local.subnets_count
   name                 = var.subnets_info[count.index].name
   resource_group_name  = azurerm_resource_group.base.name
   virtual_network_name = azurerm_virtual_network.ntier[0].name
