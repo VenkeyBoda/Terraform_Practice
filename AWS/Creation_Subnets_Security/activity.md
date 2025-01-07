@@ -42,4 +42,5 @@
    * created ec2 instance after all changes done: [passed sensitive user values](https://github.com/VenkeyBoda/Terraform_Practice/commit/84814be4fc815e83be2e8c358cbdeec33a5a1dc4) 
 
 # using data sources for executing the results
+   * used datasources webimage: [added datasources](https://github.com/VenkeyBoda/Terraform_Practice/commit/21d21a50ab93e90478139c47f7f11513307135a3)
       
