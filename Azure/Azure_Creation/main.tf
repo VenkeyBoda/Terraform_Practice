@@ -1,29 +1,32 @@
 # Create a azure resource group
 resource "azurerm_resource_group" "base" {
-  name     = "RG_Main"
-  location = "eastus"
+  name     = var.location_info[0].name
+  location = var.location_info[0].location
 
 }
 
 # Create a azure virtual network group
 resource "azurerm_virtual_network" "ntier" {
-  name                = "ntier_group"
+  count               = length(var.virtual_network_info)
+  name                = var.virtual_network_info[count.index].name
   resource_group_name = azurerm_resource_group.base.name
-  address_space       = ["10.0.0.0/16"]
-  location            = "esatus"
+  address_space       = [var.virtual_network_info[count.index].address_space]
+  location            = var.virtual_network_info[count.index].location
   depends_on          = [azurerm_resource_group.base]
 
 }
 
 # Create a azure subnet group
 resource "azurerm_subnet" "web" {
-  name                 = "web"
+  count                = length(var.subnets_info)
+  name                 = var.subnets_info[count.index].name
   resource_group_name  = azurerm_resource_group.base.name
-  virtual_network_name = azurerm_virtual_network.ntier.name
-  address_prefixes     = ["10.0.0.0/24"]
+  virtual_network_name = azurerm_virtual_network.ntier[0].name
+  address_prefixes     = [var.subnets_info[count.index].address_prefix]
   depends_on = [
     azurerm_resource_group.base,
     azurerm_virtual_network.ntier
   ]
 
 }
+
