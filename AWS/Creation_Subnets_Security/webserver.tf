@@ -1,6 +1,6 @@
 # create an ec2 instance resource with ubuntu 24.04
 resource "aws_instance" "web" {
-  ami                         = var.web_instance_info.ami
+  ami                         = data.aws_ami.webimage.id
   instance_type               = var.web_instance_info.instance_type
   key_name                    = aws_key_pair.sshkey.key_name
   associate_public_ip_address = var.web_instance_info.associate_public_ip_address

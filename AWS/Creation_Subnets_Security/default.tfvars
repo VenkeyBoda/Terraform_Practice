@@ -37,8 +37,8 @@ web_security_group = {
     from_port = 22 # SSH access
     to_port   = 22
     }, {
-    from_port = 5000 # Application access
-    to_port   = 5000
+    from_port = 8080 # Application access
+    to_port   = 8080
 
   }]
 }
@@ -59,5 +59,7 @@ key-info = {
 # Web Instance Information
 web_instance_info = {
   name = "test-server" # Name of the web server instance
+  filter_ami = {
 
+  }
 }
