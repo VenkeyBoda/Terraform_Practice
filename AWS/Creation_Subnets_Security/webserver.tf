@@ -9,7 +9,10 @@ resource "aws_instance" "web" {
   }
   subnet_id              = aws_subnet.public[0].id
   vpc_security_group_ids = [aws_security_group.web.id]
+
+  user_data = file("scripts.sh")
   depends_on = [aws_key_pair.sshkey,
     aws_subnet.public,
-  aws_security_group.web]
+  aws_security_group.web,
+  data.aws_ami.webimage]
 }

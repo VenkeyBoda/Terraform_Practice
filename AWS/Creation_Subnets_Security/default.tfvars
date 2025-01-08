@@ -37,8 +37,8 @@ web_security_group = {
     from_port = 22 # SSH access
     to_port   = 22
     }, {
-    from_port = 8080 # Application access
-    to_port   = 8080
+    from_port = 80 # Application access
+    to_port   = 80
 
   }]
 }
