@@ -52,3 +52,9 @@
 
    * remote-exec: [pass the data using provisioners](https://github.com/VenkeyBoda/Terraform_Practice/commit/de157da52fc96a1ad8780a328fa69b20f997fdd6)   
 
+# Null resource
+   * The primary use-case for the null resource is as a do-nothing containerfor    arbitrary actions taken by a provisioner.
+   * multiple shell scripts are installed and then a null_resource instance is used to gather data about all and execute a single action that affects them all. 
+   * Due to the triggers map, the null_resource will be replaced each time the instance ids change, and thus the remote-exec provisioner will be re-run.
+
+   * Null resource created: [installd nginx and java](https://github.com/VenkeyBoda/Terraform_Practice/commit/e1c21081488b86dcddba27847fdc5fa2ef5115fc) 
