@@ -10,9 +10,22 @@ resource "aws_instance" "web" {
   subnet_id              = aws_subnet.public[0].id
   vpc_security_group_ids = [aws_security_group.web.id]
 
-  user_data = file("scripts.sh")
+
+  # user_data = file("scripts.sh") instead of provisioners, inacse without using provisioners we can direct pass user data
+
+  # Establishes connection to be used by all
+  connection {
+    type        = "ssh"
+    user        = var.web_instance_info.username
+    private_key = file(var.key-info.private_key_path)
+    host        = self.public_ip
+  }
+  # generic remote provisioners (i.e. file/remote-exec)
+  provisioner "remote-exec" {
+    script = "./scripts.sh"
+  }
   depends_on = [aws_key_pair.sshkey,
     aws_subnet.public,
-  aws_security_group.web,
+    aws_security_group.web,
   data.aws_ami.webimage]
 }

@@ -43,4 +43,7 @@
 
 # using data sources for executing the results
    * used datasources webimage: [added datasources](https://github.com/VenkeyBoda/Terraform_Practice/commit/21d21a50ab93e90478139c47f7f11513307135a3)
-      
+
+# user data
+
+   * intall nginx used user data(scripts.sh): [nginx server install](https://github.com/VenkeyBoda/Terraform_Practice/commit/5c1762c9d4ad5c46589ba71b58aab70c421bac6d) 
