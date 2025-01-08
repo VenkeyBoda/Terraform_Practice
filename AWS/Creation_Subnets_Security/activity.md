@@ -47,3 +47,8 @@
 # user data
 
    * intall nginx used user data(scripts.sh): [nginx server install](https://github.com/VenkeyBoda/Terraform_Practice/commit/5c1762c9d4ad5c46589ba71b58aab70c421bac6d) 
+
+# Provisioners
+
+   * remote-exec: [pass the data using provisioners](https://github.com/VenkeyBoda/Terraform_Practice/commit/de157da52fc96a1ad8780a328fa69b20f997fdd6)   
+
