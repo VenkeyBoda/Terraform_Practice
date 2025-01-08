@@ -10,22 +10,31 @@ resource "aws_instance" "web" {
   subnet_id              = aws_subnet.public[0].id
   vpc_security_group_ids = [aws_security_group.web.id]
 
+  depends_on = [aws_key_pair.sshkey,
+    aws_subnet.public,
+    aws_security_group.web,
+  data.aws_ami.webimage]
+}
 
-  # user_data = file("scripts.sh") instead of provisioners, inacse without using provisioners we can direct pass user data
+# user_data = file("scripts.sh") instead of provisioners, inacse without using provisioners we can direct pass user data
+
+# The primary use-case for the null resource is as a do-nothing containerfor arbitrary actions taken by a provisioner
+
+resource "null_resource" "web_trigger" {
+  triggers = {
+    trigger_instance_id = var.instance_id
+  }
 
   # Establishes connection to be used by all
   connection {
     type        = "ssh"
     user        = var.web_instance_info.username
     private_key = file(var.key-info.private_key_path)
-    host        = self.public_ip
+    host        = aws_instance.web.public_ip
   }
   # generic remote provisioners (i.e. file/remote-exec)
   provisioner "remote-exec" {
     script = "./scripts.sh"
   }
-  depends_on = [aws_key_pair.sshkey,
-    aws_subnet.public,
-    aws_security_group.web,
-  data.aws_ami.webimage]
+
 }

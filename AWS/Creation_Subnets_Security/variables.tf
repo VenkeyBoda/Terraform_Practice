@@ -92,3 +92,9 @@ variable "web_instance_info" {
 
   })
 }
+
+variable "instance_id" {
+  type    = string
+  default = "2"
+
+}
