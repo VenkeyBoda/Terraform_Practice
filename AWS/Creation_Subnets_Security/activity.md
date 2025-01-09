@@ -62,3 +62,7 @@
 # deploy the nginx web server using css-templates
 
    * css-templates: [antique cafe template](https://github.com/VenkeyBoda/Terraform_Practice/commit/0fc881417a9833071de05bc6d11e81daeaf7157c) 
+
+# security check scans
+
+   *  security scan root block and metadata tokens: [tfscan security checks](https://github.com/VenkeyBoda/Terraform_Practice/commit/4ec840a9d23e8fac145f6c90bafb5644bb1ce68f) 
