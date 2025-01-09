@@ -22,7 +22,7 @@ resource "aws_instance" "web" {
 
 resource "null_resource" "web_trigger" {
   triggers = {
-    trigger_instance_id = var.instance_id
+    trigger_build_id = var.build_id
   }
 
   # Establishes connection to be used by all

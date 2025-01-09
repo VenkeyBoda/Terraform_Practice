@@ -25,3 +25,8 @@ output "ssh_command" {
   )
   description = "SSH command to connect to the web server"
 }
+
+# deploy the server using templates output
+output "deploy_server" {
+  value = "http://${aws_instance.web.public_ip}/cafe"
+}

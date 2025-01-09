@@ -93,8 +93,8 @@ variable "web_instance_info" {
   })
 }
 
-variable "instance_id" {
+variable "build_id" {
   type    = string
-  default = "2"
+  default = "1"
 
 }
