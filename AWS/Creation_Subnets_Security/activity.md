@@ -57,4 +57,8 @@
    * multiple shell scripts are installed and then a null_resource instance is used to gather data about all and execute a single action that affects them all. 
    * Due to the triggers map, the null_resource will be replaced each time the instance ids change, and thus the remote-exec provisioner will be re-run.
 
-   * Null resource created: [installd nginx and java](https://github.com/VenkeyBoda/Terraform_Practice/commit/e1c21081488b86dcddba27847fdc5fa2ef5115fc) 
+   * Null resource created: [installd nginx and java](https://github.com/VenkeyBoda/Terraform_Practice/commit/e1c21081488b86dcddba27847fdc5fa2ef5115fc)
+
+# deploy the nginx web server using css-templates
+
+   * css-templates: [antique cafe template](https://github.com/VenkeyBoda/Terraform_Practice/commit/0fc881417a9833071de05bc6d11e81daeaf7157c) 
