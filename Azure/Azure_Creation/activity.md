@@ -1,4 +1,4 @@
-# I want to create a vnet with subnet in Azure
+# I want to Create the network with a vm in a subnet with nginx installed in azure
 
 # steps:
 
