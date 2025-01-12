@@ -2,7 +2,7 @@
 variable "location_info" {
   type = list(object({
     name     = optional(string, "web-server")
-    location = optional(string, "eastus")
+    location = optional(string, "centralindia")
   }))
   description = "variable for a resource group"
 }

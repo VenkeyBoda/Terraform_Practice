@@ -30,3 +30,12 @@ resource "azurerm_subnet" "web" {
 
 }
 
+# create a public ip address
+resource "azurerm_public_ip" "base" {
+  name                = "web-1-ip"
+  location            = "centralindia"
+  resource_group_name = azurerm_resource_group.base.name
+  allocation_method   = "Static"
+  depends_on          = [azurerm_resource_group.base]
+}
+
