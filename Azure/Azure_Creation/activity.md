@@ -14,5 +14,6 @@
    * Using varibales and .tfvars: [Passed sensitive values](https://github.com/VenkeyBoda/Terraform_Practice/commit/5f15ec8b939119a705c0b37f26777a1d250d727e)
 
    * local values: [local values declared](https://github.com/VenkeyBoda/Terraform_Practice/commit/2da23fc16139d547ac1abae4467e7cb5eea9db69) 
-
+   
+   * created nsg and public ip address: [passed hardcore values](https://github.com/VenkeyBoda/Terraform_Practice/commit/d43f77f37deae81cafa71013c4e0a15546024e2b)
    
