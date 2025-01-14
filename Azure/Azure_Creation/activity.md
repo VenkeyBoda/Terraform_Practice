@@ -21,3 +21,10 @@
 
    * created webserver for vm machine: [vm machine and output](https://github.com/VenkeyBoda/Terraform_Practice/commit/5f5a54a6fafb37e0534f6148dcf1b839c2b0de7d)
 
+# Null resource and Provisioners
+   * The primary use-case for the null resource is as a do-nothing containerfor    arbitrary actions taken by a provisioner.
+   * multiple shell scripts are installed and then a null_resource instance is used to gather data about all and execute a single action that affects them all. 
+   * Due to the triggers map, the null_resource will be replaced each time the instance ids change, and thus the remote-exec provisioner will be re-run.
+
+# Install and deploy the nginx web server using css-templates
+   * css-templates: [antique cafe template](https://github.com/VenkeyBoda/Terraform_Practice/commit/98b05c35685100c862c3ef454baa90d9932a53a4)
