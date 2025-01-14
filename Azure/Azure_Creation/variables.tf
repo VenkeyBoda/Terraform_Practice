@@ -52,3 +52,14 @@ variable "webserver_subnet_value" {
   type        = number
   default     = 0
 }
+
+variable "web_server_info" {
+  type = object({
+    name             = string
+    size             = optional(string, "Standard_B1s")
+    admin_username   = optional(string, "devops")
+    public_key_path  = optional(string, "~/.ssh/id_rsa.pub")
+    private_key_path = optional(string, "~/.ssh/id_rsa")
+
+  })
+}

@@ -1,6 +1,6 @@
 location_info = "centralindia"
 
-purpose  = "ntier"
+purpose = "ntier"
 
 # virtual network variables configuration
 virtual_network_info = [{
@@ -38,3 +38,7 @@ nsg_info = {
 }
 
 webserver_subnet_value = 0
+
+web_server_info = {
+  name = "webserver"
+}

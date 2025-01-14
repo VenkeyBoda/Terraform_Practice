@@ -16,4 +16,7 @@
    * local values: [local values declared](https://github.com/VenkeyBoda/Terraform_Practice/commit/2da23fc16139d547ac1abae4467e7cb5eea9db69) 
    
    * created nsg and public ip address: [passed hardcore values](https://github.com/VenkeyBoda/Terraform_Practice/commit/d43f77f37deae81cafa71013c4e0a15546024e2b)
+
+   * created network interface and associated with nsg to nic: [nsg to nic](https://github.com/VenkeyBoda/Terraform_Practice/commit/1bb9ed84d49a9f4f481f3e03ce924ee5c1f98346)
+
    
