@@ -30,5 +30,25 @@ resource "azurerm_linux_virtual_machine" "web" {
     azurerm_subnet.web,
     azurerm_public_ip.base
   ]
+}
 
+# The primary use-case for the null resource is as a do-nothing containerfor arbitrary actions taken by a provisioner
+resource "null_resource" "web" {
+  triggers = {
+    triggers_build_id = var.build_id
+  }
+
+  # Establishes connection to be used by all
+  connection {
+    host        = azurerm_linux_virtual_machine.web.public_ip_address
+    type        = "ssh"
+    user        = var.web_server_info.admin_username
+    private_key = file(var.web_server_info.private_key_path)
+  }
+
+  # generic remote provisioners (i.e. file/remote-exec)
+  provisioner "remote-exec" {
+    script = "./nginx.sh"
+
+  }
 }

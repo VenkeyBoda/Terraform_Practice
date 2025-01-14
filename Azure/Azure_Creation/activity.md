@@ -19,4 +19,5 @@
 
    * created network interface and associated with nsg to nic: [nsg to nic](https://github.com/VenkeyBoda/Terraform_Practice/commit/1bb9ed84d49a9f4f481f3e03ce924ee5c1f98346)
 
-   
+   * created webserver for vm machine: [vm machine and output](https://github.com/VenkeyBoda/Terraform_Practice/commit/5f5a54a6fafb37e0534f6148dcf1b839c2b0de7d)
+

@@ -17,3 +17,9 @@ output "ssh_coomand" {
     azurerm_linux_virtual_machine.web.public_ip_address # Public IP of the web vm
   )
 }
+
+# deploy the server using templates output
+output "deploy_template" {
+    value = "http://${azurerm_linux_virtual_machine.web.public_ip_address}/cafe"
+  
+}

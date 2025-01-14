@@ -47,12 +47,14 @@ variable "nsg_info" {
   })
 }
 
+# create a variable group for webserver subnet value 
 variable "webserver_subnet_value" {
   description = "Index of the subnet to use"
   type        = number
   default     = 0
 }
 
+# create a variable group for web server information
 variable "web_server_info" {
   type = object({
     name             = string
@@ -62,4 +64,10 @@ variable "web_server_info" {
     private_key_path = optional(string, "~/.ssh/id_rsa")
 
   })
+}
+
+variable "build_id" {
+  type    = string
+  default = "1"
+
 }
