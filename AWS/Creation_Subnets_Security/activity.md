@@ -66,3 +66,7 @@
 # security check scans
 
    *  security scan root block and metadata tokens: [tfscan security checks](https://github.com/VenkeyBoda/Terraform_Practice/commit/4ec840a9d23e8fac145f6c90bafb5644bb1ce68f) 
+
+# create a RDS DB subnet group resource with private subnet and connect to the EC2 instance
+
+   * create a RDS DB instance and attach the DB security group: [mysql data instance ](https://github.com/VenkeyBoda/Terraform_Practice/commit/f6eb0bc662fe743b1eabc56b9c85213e6d0dc662#diff-1a5da91fd9b0784c3a61f85a09ef7c5146a1bd767bff62f0610f4d971520909a)  
