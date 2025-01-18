@@ -63,3 +63,12 @@ web_instance_info = {
 
   }
 }
+
+# RDS db instance configuration
+db_instance_info = {
+  allocated_storage   = 20
+  db_name             = "my_db"
+  username            = "my_rds"
+  password            = "venkat0206"
+  skip_final_snapshot = true
+}

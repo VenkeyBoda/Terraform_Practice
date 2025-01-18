@@ -98,3 +98,18 @@ variable "build_id" {
   default = "1"
 
 }
+
+# variable group information for RDS DB instance
+variable "db_instance_info" {
+  type = object({
+    allocated_storage   = number
+    db_name             = string
+    engine              = optional(string, "mysql")
+    engine_version      = optional(string, "8.0")
+    instance_class      = optional(string, "db.t3.micro")
+    username            = string
+    password            = string
+    skip_final_snapshot = bool
+  })
+
+}

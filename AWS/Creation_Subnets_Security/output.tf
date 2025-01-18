@@ -30,3 +30,12 @@ output "ssh_command" {
 output "deploy_server" {
   value = "http://${aws_instance.web.public_ip}/cafe"
 }
+
+# rds endpoint
+output "rds_endpoint" {
+  value = format("mysql -h %s -P %s -u %s -p",
+    aws_db_instance.rds.endpoint,
+    var.db_security_group.rules[0].from_port,
+    aws_db_instance.rds.username
+  )
+}

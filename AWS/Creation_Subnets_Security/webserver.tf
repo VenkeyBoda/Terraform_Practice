@@ -9,13 +9,13 @@ resource "aws_instance" "web" {
   }
   subnet_id = aws_subnet.public[0].id
 
-# tfsec using security scans for metadata enable the HTTP token requirement for IMDS.
+  # tfsec using security scans for metadata enable the HTTP token requirement for IMDS.
   metadata_options {
     http_tokens = "required"
   }
   vpc_security_group_ids = [aws_security_group.web.id]
 
-# scans the tfsec root block
+  # scans the tfsec root block
   root_block_device {
     encrypted   = true
     volume_size = 8
@@ -36,7 +36,7 @@ resource "null_resource" "web_trigger" {
     trigger_build_id = var.build_id
   }
 
-# Establishes connection to be used by all
+  # Establishes connection to be used by all
   connection {
     type        = "ssh"
     user        = var.web_instance_info.username
