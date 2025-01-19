@@ -27,4 +27,4 @@
    * Due to the triggers map, the null_resource will be replaced each time the instance ids change, and thus the remote-exec provisioner will be re-run.
 
 # Install and deploy the nginx web server using css-templates
-   * css-templates: [antique cafe template](https://github.com/VenkeyBoda/Terraform_Practice/commit/98b05c35685100c862c3ef454baa90d9932a53a4)
+   * css-templates: [antique cafe template](https://github.com/VenkeyBoda/Terraform_Practice/commit/98b05c35685100c862c3ef454baa90d9932a53a4) 
