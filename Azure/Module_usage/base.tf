@@ -54,3 +54,19 @@ module "nsg" {
   depends_on = [azurerm_resource_group.base]
 }
 
+# create a public ip address module
+module "pip_address" {
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/Public_ip?ref=v1.0.2"
+  resource_group = azurerm_resource_group.base.name
+  location       = azurerm_resource_group.base.location
+  pip_address = {
+    name              = "web-pip"
+    allocation_method = "Static"
+  }
+  tags = {
+    Env  = "qa"
+    Team = "DevOps"
+  }
+  depends_on = [azurerm_resource_group.base]
+
+}
