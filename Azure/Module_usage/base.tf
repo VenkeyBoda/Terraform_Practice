@@ -5,17 +5,12 @@ resource "azurerm_resource_group" "base" {
 
 # create a virtual network module
 module "vnet" {
-  source         = "github.com/VenkeyBoda/Modules_TF//Azure/vnet?ref=v1.0.0"
+  source         = "./modules/vnet"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   network_info = {
     address_space = ["10.0.0.0/16"]
     name          = "ntier"
-    subnets = {
-      web = "10.0.0.0/24"
-      app = "10.0.1.0/24"
-      db  = "10.0.2.0/24"
-    }
   }
   tags = {
     Env  = "Dev"
@@ -24,9 +19,26 @@ module "vnet" {
   depends_on = [azurerm_resource_group.base]
 }
 
+# Create a subnets module
+module "subnets" {
+  source         = "./modules/subnets"
+  resource_group = azurerm_resource_group.base.name
+  location       = azurerm_resource_group.base.location
+  vnet_name      = module.vnet.vnet_name
+  subnets_info = [{
+    name             = "web"
+    address_prefixes = "10.0.0.0/24"
+    }, {
+    name             = "app"
+    address_prefixes = "10.0.1.0/24"
+    }, {
+    name             = "db"
+    address_prefixes = "10.0.2.0/24"
+  }]
+}
 # create a network security group module
 module "nsg" {
-  source         = "github.com/VenkeyBoda/Modules_TF//Azure/security-group?ref=v1.0.1"
+  source         = "./modules/security-group"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   nsg_info = {
@@ -56,7 +68,7 @@ module "nsg" {
 
 # create a public ip address module
 module "pip_address" {
-  source         = "github.com/VenkeyBoda/Modules_TF//Azure/Public_ip?ref=v1.0.2"
+  source         = "./modules/Public_ip"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   pip_address = {
@@ -69,4 +81,36 @@ module "pip_address" {
   }
   depends_on = [azurerm_resource_group.base]
 
+}
+
+# Create a network interface and network interface security group association
+module "nic_to_nsg" {
+  source         = "./modules/Network_interface"
+  resource_group = azurerm_resource_group.base.name
+  location       = azurerm_resource_group.base.location
+  nsg-id         = module.nsg.nsg_id
+  subnets_id     = module.subnets.subnets_id[0]
+  pip-id         = module.pip_address.pip_id
+  tags = {
+    Env  = "dev"
+    Team = "DevOps"
+  }
+  depends_on = [module.subnets.subnets_id,
+  module.pip_address.pip_id]
+
+}
+
+# create a vm with a network interface associated with nsg and public ip
+module "virtual_machine" {
+  source         = "./modules/Virtual_Machine"
+  resource_group = azurerm_resource_group.base.name
+  location       = azurerm_resource_group.base.location
+  nic_id         = module.nic_to_nsg.nic_id
+  web_server_info = {
+    name = "web-VM"
+  }
+  depends_on = [module.nic_to_nsg.nic_id,
+    module.nsg.nsg_id,
+    module.subnets.subnet_id,
+  module.pip_address.pip_id]
 }
