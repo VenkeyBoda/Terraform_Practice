@@ -4,7 +4,7 @@
 
 # web server URL output
 output "web-url" {
-  value = module.virtual_machine.url
+  value       = module.virtual_machine.url
   description = "The public URL of the web server"
 }
 

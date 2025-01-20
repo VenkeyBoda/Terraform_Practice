@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "base" {
 
 # create a virtual network module
 module "vnet" {
-  source         = "./modules/vnet"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/vnet"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   network_info = {
@@ -21,7 +21,7 @@ module "vnet" {
 
 # Create a subnets module
 module "subnets" {
-  source         = "./modules/subnets"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/subnets"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   vnet_name      = module.vnet.vnet_name
@@ -38,7 +38,7 @@ module "subnets" {
 }
 # create a network security group module
 module "nsg" {
-  source         = "./modules/security-group"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/security-group"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   nsg_info = {
@@ -68,7 +68,7 @@ module "nsg" {
 
 # create a public ip address module
 module "pip_address" {
-  source         = "./modules/Public_ip"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/Public_ip"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   pip_address = {
@@ -85,7 +85,7 @@ module "pip_address" {
 
 # Create a network interface and network interface security group association
 module "nic_to_nsg" {
-  source         = "./modules/Network_interface"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/Network_interface"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   nsg-id         = module.nsg.nsg_id
@@ -102,7 +102,7 @@ module "nic_to_nsg" {
 
 # create a vm with a network interface associated with nsg and public ip
 module "virtual_machine" {
-  source         = "./modules/Virtual_Machine"
+  source         = "github.com/VenkeyBoda/Modules_TF//Azure/Virtual_Machine"
   resource_group = azurerm_resource_group.base.name
   location       = azurerm_resource_group.base.location
   nic_id         = module.nic_to_nsg.nic_id
