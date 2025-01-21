@@ -107,7 +107,11 @@ module "virtual_machine" {
   location       = azurerm_resource_group.base.location
   nic_id         = module.nic_to_nsg.nic_id
   web_server_info = {
-    name = "web-VM"
+    name             = "web-VM"
+    size             = "Standard_B1s"
+    admin_username   = "devops"
+    public_key_path  = "~/.ssh/id_rsa.pub"
+    private_key_path = "~/.ssh/id_rsa"
   }
   depends_on = [module.nic_to_nsg.nic_id,
     module.nsg.nsg_id,
