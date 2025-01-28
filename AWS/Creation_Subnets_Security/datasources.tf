@@ -7,5 +7,4 @@ data "aws_ami" "webimage" {
     values = [var.web_instance_info.filter_ami.name]
   }
   owners = [var.web_instance_info.filter_ami.owner] # Canonical
-
 }

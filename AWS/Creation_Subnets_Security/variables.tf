@@ -69,7 +69,7 @@ variable "db_security_group" {
   })
 }
 
-# # Key Pair Variable Group for importing an existing key pair the public key
+# Key Pair Variable Group for importing an existing key pair the public key
 variable "key-info" {
   type = object({
     name             = string
