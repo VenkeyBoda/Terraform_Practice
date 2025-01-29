@@ -32,7 +32,8 @@ resource "azurerm_subnet" "web" {
 
 # create a public ip address
 resource "azurerm_public_ip" "base" {
-  name                = "${var.purpose}-ip"
+  count               = var.vm_count
+  name                = "${var.purpose}-ip-${count.index + 1}"
   location            = var.location_info
   resource_group_name = azurerm_resource_group.base.name
   allocation_method   = "Static"
@@ -41,14 +42,15 @@ resource "azurerm_public_ip" "base" {
 
 # ctreate a network interface
 resource "azurerm_network_interface" "web" {
-  name                = "web-nic"
+  count               = var.vm_count
+  name                = "web-nic-${count.index + 1}"
   location            = var.location_info
   resource_group_name = azurerm_resource_group.base.name
   ip_configuration {
-    name                          = "web"
+    name                          = "ipconfig-${count.index + 1}"
     subnet_id                     = azurerm_subnet.web[var.webserver_subnet_value].id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.base.id
+    public_ip_address_id          = azurerm_public_ip.base[count.index].id
   }
   depends_on = [azurerm_subnet.web,
   azurerm_public_ip.base]
@@ -56,7 +58,8 @@ resource "azurerm_network_interface" "web" {
 
 # create a network interface security group association
 resource "azurerm_network_interface_security_group_association" "nsg_to_nic" {
-  network_interface_id      = azurerm_network_interface.web.id
+  count                     = var.vm_count
+  network_interface_id      = azurerm_network_interface.web[count.index].id
   network_security_group_id = azurerm_network_security_group.web.id
 
 }

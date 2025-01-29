@@ -71,3 +71,9 @@ variable "build_id" {
   default = "1"
 
 }
+
+variable "vm_count" {
+  type = number
+  default = 2
+
+}
