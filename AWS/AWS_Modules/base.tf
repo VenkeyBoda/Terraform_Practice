@@ -34,7 +34,7 @@ module "security-group" {
 # Module for creating EC2 instances
 module "ec2-instance" {
   source         = "github.com/VenkeyBoda/Modules_TF//AWS/EC2-Instance"
-  instance_count = 2
+  instance_count = 1
   key-info = {
     name             = "my-key-pair"
     public_key_path  = "~/.ssh/id_rsa.pub"
