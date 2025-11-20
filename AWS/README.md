@@ -1,1 +1,1 @@
-Terraform
+A Terraform-based Infrastructure-as-Code repository containing reusable modules and real-world examples for provisioning AWS resources such as VPCs, EC2 instances, security groups, load balancers, IAM roles, and S3 buckets. Ideal for DevOps automation, cloud learning, and infrastructure deployment.
